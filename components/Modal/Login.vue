@@ -62,10 +62,15 @@ export default {
           return
         }
         //에러가없다면 로컬state저장, store-user.js
-        this.$store.commit('user/SET_USER',{email:data.email, nickname:data.nickname})
+        this.$store.commit('user/SET_USER',{
+            email:data.email, 
+            nickname:data.nickname,
+            token:data.token
+        })
         //닫힘
         this.$store.commit('modal/SET_LOGIN_MODAL_CLOSE')
       },
+
       timeModifier(){
         this.leftTime -= 1
         if(this.leftTime <= 0){

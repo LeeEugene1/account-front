@@ -41,8 +41,16 @@ export default {
         clickLoginButton(){
             if(!this.user.email){
                 this.$store.commit('modal/SET_LOGIN_MODAL_OPEN')
+                return
             }
-        }
+            this.logout()
+        },
+        logout(){
+            //에러가없다면 로컬state저장, store-user.js
+            this.$store.commit('user/SET_USER',{email:null, nickname:null})
+            //닫힘
+            this.$store.commit('modal/SET_LOGIN_MODAL_CLOSE')
+        },
     },
 }
 </script>

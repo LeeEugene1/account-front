@@ -4,9 +4,14 @@ export const state = () => ({
     nickname:null
 })
 export const mutations = {
-    SET_USER(state,{email, nickname}){
-        state.email = email;
-        state.nickname = nickname;
+    SET_USER(state,{email, nickname, token}){
+        state.email = email
+        state.nickname = nickname
+        if(token){
+            localStorage.setItem('token', token)
+        }else{
+            localStorage.removeItem('token')
+        }
     }
 }//상태변화
 export const actions = {}
